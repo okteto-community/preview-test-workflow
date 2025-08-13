@@ -30,10 +30,13 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
+        # the name of the preview environment is also the name of the namespace, 
+        # this is needed in the test section
         name: url-shortener-pr-${{ github.event.number }}
         timeout: 15m
 
     - name: Run Tests
       uses: okteto/test@latest
       with:
-        name: url-shortener-pr-${{ github.event.number }}
+        # set the same namespace than the preview environment so okteto knows which environment to target
+        namespace: url-shortener-pr-${{ github.event.number }}
