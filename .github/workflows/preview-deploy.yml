@@ -2,9 +2,14 @@ name: Preview Environment Deploy
 
 on:
   pull_request:
-    branches: [ main, master ]
-    types: [ opened, synchronize, reopened ]
+    branches: [ main ]
+    types: [ opened ]
 
+concurrency:
+  # more info here: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#concurrency
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+  
 jobs:
   deploy-preview:
     runs-on: ubuntu-latest
