@@ -1,7 +1,5 @@
 # URL Shortener - Okteto Preview Environments Demo
 
-[![Preview Deploy](https://github.com/YOUR_USERNAME/YOUR_REPO/actions/workflows/preview-deploy.yml/badge.svg)](https://github.com/YOUR_USERNAME/YOUR_REPO/actions/workflows/preview-deploy.yml)
-
 A complete URL shortener application demonstrating **Okteto Preview Environments** and **automated testing** in the pull request workflow. This repository showcases how to build, test, and deploy cloud-native applications using Okteto's developer platform.
 
 ## 🎯 **What This Demo Teaches**
@@ -235,14 +233,17 @@ okteto endpoints
 ```
 
 ### **2. Making Changes**
+
+# Activate developer mode so your changes are automatically applied
+okteto up
+
+
 ```bash
 # Make your changes
 # ... edit files ...
 
-# Redeploy to see changes in Okteto
-okteto deploy --wait
 
-# Run tests in Okteto containers
+# Run tests in Okteto containers in a separate terminal
 okteto test e2e
 ```
 

@@ -1,5 +1,19 @@
+build:
+  app-dev:
+    context: app
+    target: builder
+
 deploy:
   compose: docker-compose.yml
+
+dev:
+  app:
+    command: yarn dev
+    environment:
+      HOSTNAME: "0.0.0.0"
+    image: $OKTETO_BUILD_APP_DEV_IMAGE
+    sync:
+    - app:/app
 
 test:
   e2e:

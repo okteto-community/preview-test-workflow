@@ -15,6 +15,7 @@ jobs:
     - name: Context
       uses: okteto/context@latest
       with:
+        url: ${{ secrets.OKTETO_CONTEXT }}
         token: ${{ secrets.OKTETO_TOKEN }}
 
     - name: Destroy Preview Environment
