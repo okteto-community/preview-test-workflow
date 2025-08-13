@@ -16,12 +16,12 @@ This repository demonstrates how to:
 ## 🏗️ **Application Architecture**
 
 ```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Frontend      │────│   Backend API   │────│   PostgreSQL    │
-│   (Next.js)     │    │   (Next.js)     │    │   Database      │
-│   - Material-UI │    │   - URL Shortening │ │   - URL Storage  │
-│   - Responsive  │    │   - Analytics    │    │   - Click Tracking │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
+┌─────────────────┐    ┌────────────────────┐   ┌────────────────────┐
+│   Frontend      │────│   Backend API      │───│   PostgreSQL       │
+│   (Next.js)     │    │   (Next.js)        │   │   Database         │
+│   - Material-UI │    │   - URL Shortening │   │   - URL Storage    │
+│   - Responsive  │    │   - Analytics      │   │   - Click Tracking │
+└─────────────────┘    └────────────────────┘   └────────────────────┘
 ```
 
 ### **Features**
@@ -125,33 +125,6 @@ This repository demonstrates the complete **Preview Environment** workflow:
 - **Okteto** - Cloud-native development platform
 - **GitHub Actions** - CI/CD automation
 - **PostgreSQL** - Production-ready database
-
-## 📁 **Project Structure**
-
-```
-url-shortener/
-├── 📂 .github/workflows/       # GitHub Actions
-│   ├── preview-deploy.yml      # Deploy preview environments
-│   └── preview-cleanup.yml     # Clean up preview environments
-├── 📂 cypress/                 # End-to-end tests
-│   ├── e2e/url-shortener.cy.js # Main test suite (15 tests)
-│   ├── fixtures/               # Test data
-│   └── support/                # Helper commands
-├── 📂 db/                      # Database configuration
-│   └── init.sql                # Database schema
-├── 📂 lib/                     # Utility libraries
-│   └── db.ts                   # Database connection
-├── 📂 pages/                   # Next.js pages and API routes
-│   ├── api/                    # API endpoints
-│   ├── index.tsx               # Main application page
-│   └── [shortCode].tsx         # Redirect page
-├── 📂 public/                  # Static assets
-├── 📄 docker-compose.yml       # Application stack definition
-├── 📄 Dockerfile               # Production container
-├── 📄 okteto.yml               # Okteto deployment manifest
-├── 📄 cypress.config.js        # Cypress configuration
-└── 📄 package.json             # Dependencies and scripts
-```
 
 ## 🧪 **Testing Strategy**
 
@@ -324,15 +297,8 @@ This repository is designed as a learning resource. Feel free to:
 
 ## 📝 **License**
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source and available under the [Apache 2.0](LICENSE).
 
 ---
-
-**🎯 Ready to try Preview Environments?**
-
-1. Fork this repository
-2. Set up your Okteto account
-3. Add the required secrets
-4. Create a pull request and watch the magic happen!
 
 **Questions?** Open an issue or reach out to the Okteto community.
