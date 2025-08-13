@@ -2,11 +2,18 @@ name: Preview Environment Deploy
 
 on:
   pull_request:
-    branches: [ main, master ]
-    types: [ opened, synchronize, reopened ]
+    branches:
+      - main
 
+concurrency:
+  # more info here: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#concurrency
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+  
 jobs:
   deploy-preview:
+    permissions:
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -15,6 +22,7 @@ jobs:
     - name: Context
       uses: okteto/context@latest
       with:
+        url: ${{ secrets.OKTETO_CONTEXT }}
         token: ${{ secrets.OKTETO_TOKEN }}
 
     - name: Deploy Preview Environment
@@ -22,10 +30,13 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
+        # the name of the preview environment is also the name of the namespace, 
+        # this is needed in the test section
         name: url-shortener-pr-${{ github.event.number }}
         timeout: 15m
 
     - name: Run Tests
       uses: okteto/test@latest
       with:
-        name: url-shortener-pr-${{ github.event.number }}
+        # set the same namespace than the preview environment so okteto knows which environment to target
+        namespace: url-shortener-pr-${{ github.event.number }}
