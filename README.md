@@ -235,13 +235,11 @@ okteto endpoints
 ### **2. Making Changes**
 
 # Activate developer mode so your changes are automatically applied
+```bash
 okteto up
 
-
-```bash
 # Make your changes
 # ... edit files ...
-
 
 # Run tests in Okteto containers in a separate terminal
 okteto test e2e
