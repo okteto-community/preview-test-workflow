@@ -1,0 +1,15 @@
+{
+  "validUrls": [
+    "https://www.google.com",
+    "https://github.com",
+    "https://www.example.com/very/long/path/with/many/parameters?param1=value1&param2=value2",
+    "http://localhost:8080",
+    "https://subdomain.example.com:3000/path"
+  ],
+  "invalidUrls": [
+    "not-a-url",
+    "htp://invalid-protocol.com",
+    "invalid-url-format",
+    "just-text-without-protocol"
+  ]
+}

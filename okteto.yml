@@ -1,0 +1,13 @@
+deploy:
+  compose: docker-compose.yml
+
+test:
+  e2e:
+    image: cypress/included:13.6.1
+    caches:
+      - /root/.cache
+      - /root/.yarn
+    context: tests
+    commands:
+      - yarn install --frozen-lockfile
+      - CYPRESS_BASE_URL=https://app-${OKTETO_NAMESPACE}.${OKTETO_DOMAIN} yarn cypress:run --config video=false,screenshotOnRunFailure=false

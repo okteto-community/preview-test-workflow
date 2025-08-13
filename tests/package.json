@@ -1,0 +1,13 @@
+{
+  "name": "url-shortener-tests",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
+  },
+  "dependencies": {
+    "cypress": "^14.5.4"
+  }
+
+}

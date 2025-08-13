@@ -1,0 +1,31 @@
+name: Preview Environment Deploy
+
+on:
+  pull_request:
+    branches: [ main, master ]
+    types: [ opened, synchronize, reopened ]
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Context
+      uses: okteto/context@latest
+      with:
+        token: ${{ secrets.OKTETO_TOKEN }}
+
+    - name: Deploy Preview Environment
+      uses: okteto/deploy-preview@latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        name: url-shortener-pr-${{ github.event.number }}
+        timeout: 15m
+
+    - name: Run Tests
+      uses: okteto/test@latest
+      with:
+        name: url-shortener-pr-${{ github.event.number }}

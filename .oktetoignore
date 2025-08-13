@@ -1,0 +1,47 @@
+# Dependencies (large, will be reinstalled in container)
+app/node_modules/
+
+# Build outputs (will be regenerated)
+app/.next/
+app/out/
+app/build/
+app/dist/
+
+# Cache directories
+app/.yarn/cache
+app/.npm
+app/.cache/
+
+# Environment files (should be set as secrets/env vars)
+app/.env.local
+app/.env.development.local
+app/.env.test.local
+app/.env.production.local
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git (not needed for builds)
+.git/
+
+# Logs
+logs/
+*.log
+app/npm-debug.log*
+app/yarn-debug.log*
+app/yarn-error.log*
+
+# Temporary files
+*.tmp
+*.temp
+
+# Documentation (not needed for deployment)
+README.md
+docs/

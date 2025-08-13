@@ -1,0 +1,23 @@
+name: Preview Environment Cleanup
+
+on:
+  pull_request:
+    branches: [ main, master ]
+    types: [ closed ]
+
+jobs:
+  cleanup-preview:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Context
+      uses: okteto/context@latest
+      with:
+        token: ${{ secrets.OKTETO_TOKEN }}
+
+    - name: Destroy Preview Environment
+      uses: okteto/destroy-preview@latest
+      with:
+        name: url-shortener-pr-${{ github.event.number }}
