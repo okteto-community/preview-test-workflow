@@ -2,8 +2,8 @@ name: Preview Environment Deploy
 
 on:
   pull_request:
-    branches: [ main ]
-    types: [ opened ]
+    branches:
+      - main
 
 concurrency:
   # more info here: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#concurrency
