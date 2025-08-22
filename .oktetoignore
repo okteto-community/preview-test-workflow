@@ -45,3 +45,7 @@ app/yarn-error.log*
 # Documentation (not needed for deployment)
 README.md
 docs/
+
+[test]
+# We ignore all files because in this scenario the test image already contains the test code and dependencies
+*
